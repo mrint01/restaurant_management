@@ -1,2 +1,2 @@
-Restaurant Management
-========================
+Restaurant Management System
+============================
