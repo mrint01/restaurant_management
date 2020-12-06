@@ -1,0 +1,116 @@
+{%  extends 'profiladminbase.html.twig' %}
+{% block body %}
+
+
+
+    <section id="main">
+        <div class="container">
+            <div class="row">
+                <div  class="col-md-9">
+                    <ol  class="breadcrumb">
+                        <li class="active">Gestion de site web</li>
+                    </ol>
+                    <div class="panel panel-default">
+
+                        <nav class="navbar navbar-inverse">
+                            <div class="container-fluid">
+
+                                <ul class="nav navbar-nav">
+                                    <li ><a href="{{ path('ger_site') }}">Page d'accueil</a></li>
+                                    <li class="active"><a href="{{ path('article') }}">Article</a></li>
+
+
+                                </ul>
+                            </div>
+                        </nav>
+                        <nav class="navbar navbar-inverse" style="background-color: antiquewhite;border-color: aliceblue;">
+                            <div class="container-fluid">
+
+                                <ul class="nav navbar-nav">
+                                    <li style="background-color: azure;"><a href="{{ path('article') }}">Menu  Pizza</a></li>
+                                    <li ><a href="{{ path('article_sandwich') }}">Menu Sandwich</a></li>
+                                    <li ><a href="{{ path('article_boissons') }}">Menu Boissons</a></li>
+                                    <li ><a href="{{ path('offr_spc') }}">Offres Spéciales</a></li>
+
+
+                                </ul>
+                            </div>
+                        </nav>
+
+                        <div class="panel-body">
+                            <div class="row">
+
+                                <div style="margin-right:56px;" class="text-right">
+
+                                    <br/><br/><br/>
+                                    <a href="{{ path('article_new') }}" class="btn btn-info a-btn-slide-text">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        <span><strong>ajout</strong></span>
+                                    </a>
+                                    <div style="margin-top:-34px;margin-left:56px;width:200px;"class="input-group">
+
+                                        <input class="form-control" id="myInput" type="text" placeholder="chercher...">
+                                        <span class="input-group-btn">
+									<button  type="submit" class="btn btn-default" data-original-title="" title=""><i class="glyphicon glyphicon-search"></i></button>
+								</span>
+                                    </div>
+
+
+                                </div>
+                                <br/><br/>
+
+                                <table  class="table table-hover" >
+                                    <thead style="color: black;background-color: darkgray;border-color: black;">
+
+                                    <tr>
+                                        <th scope="col">Le nom de l'article</th>
+                                        <th scope="col">Image de l'article</th>
+                                        <th scope="col">Prix de l'article</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                    </thead>
+                                    {% for py in pizza %}
+                                        <tbody id="myTable">
+
+                                        <tr>
+                                            <td>{{ py.nameArt }}</td>
+                                            <td><img src="{{ py.imageArt }}" width="250"></td>
+                                            <td >{{ py.prixArt }}</td>
+                                            <td>
+
+                                                <a href="{{ path('art_edit' , { 'id': py.id }) }}" class="btn btn-primary a-btn-slide-text"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>  <span><strong> Modifier</strong></span></a>
+                                            </td>
+                                        </tr>
+
+
+
+
+
+                                        </tbody>
+                                    {% endfor %}
+                                </table>
+                                <br/>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br/><br/><br/><br/>
+
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+{%  endblock %}

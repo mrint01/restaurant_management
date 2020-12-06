@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8" />
+    <title>{% block title %}Profil - Admin{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('img/pizza.png') }}" />
+        <link href="{{('//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css') }}" rel="stylesheet" id="bootstrap-css">
+        <link rel="stylesheet" href="{{ asset('/assets/css/bootstrap.min.css') }}" >
+        <link rel="stylesheet" href="{{ asset('/assets/css/style.css') }}" >
+
+        <script src="{{ ('//ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js') }}"></script>
+        <script src="{{ ('//cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js') }}"></script>
+        <script src="{{ ('//maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js') }}"></script>
+
+    {% endblock %}
+
+</head>
+<body>
+
+<header id="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-90">
+                <ul  class="nav navbar-nav navbar-right">
+                    <a style="margin-left:-64px;" href="{{ path('profil_ad') }}" ><img style="margin-top:10px;height:26px" src="{{ asset('img/3.png') }}"> </a>
+                    <a href="{{path('logout') }}"><img height="23px" style="margin-top:10px;height:31px;margin-left: 19px;" src="{{ ('//img.icons8.com/color/48/000000/shutdown.png') }}"></a>
+
+
+                </ul>
+                <a href="{{path('homepage') }}"><img style="margin-top:11px;height:42px;" src="{{ asset('img/6.png') }}" ></a>
+            </div>
+            <div class="col-md-2">
+
+            </div>
+        </div>
+    </div>
+</header>
+<br>
+
+<div class="col-md-3">
+    <br/><br/>  <br/>
+    <div class="list-group" id="myList" role="tablist">
+        <a href="{{ path('profil_ad') }}"  class="list-group-item "><span class="glyphicon glyphicon-home" aria-hidden="true"></span> profil <span class="badge"></span></a>
+        <a href="{{ path('admin') }}" class="list-group-item "><span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+            Tableau de bord <span class="badge"></span>
+        </a>
+
+        <a href=" {{  path('usr_index') }}" class="list-group-item"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Utilisateurs <span class="badge"></span></a>
+        <a href="{{  path('ger_site') }}" class="list-group-item"><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> Gestion de site web <span class="badge"></span></a>
+        <a href="{{  path('msg') }}" class="list-group-item"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Messages <span class="badge"></span></a>
+
+
+    </div>
+
+
+</div>
+{% block body %}
+{% endblock %}
+{% block javascripts %}
+{% endblock %}
+
+<footer id="footer">
+    <p>Copyright ©2020</p>
+</footer>
+</body>
+</html>

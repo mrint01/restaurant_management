@@ -1,0 +1,100 @@
+{%  extends 'profiladminbase.html.twig' %}
+{% block body %}
+
+    <section id="main">
+        <div class="container">
+            <div class="row">
+                <div  class="col-md-9">
+                    <ol  class="breadcrumb">
+                        <li class="active">Utilisateurs</li>
+                    </ol>
+                    <!--Latest User-->
+                    <div class="panel panel-default">
+
+                        <div class="panel-body">
+                            <div class="row">
+
+                                <h1 class="text-primary text-center">Info</h1>
+                                <div style="margin-left: -2%;width: 87%;padding-right: 5px;" class="col-sm-6 col-sm-offset-3">
+
+                                    <table class="table">
+
+                                        <tbody>
+                                        <tr>
+                                            <th>Nom d'utilisateur</th>
+                                            <td>{{ usr.username }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Prénom</th>
+                                            <td>{{ usr.name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Nom</th>
+                                            <td>{{ usr.lastname }}</td>
+                                        </tr>
+
+                                        <tr>
+                                            <th>Email</th>
+                                            <td>{{ usr.email }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Numéro de tel</th>
+                                            <td>{{ usr.numtel }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Addresse</th>
+                                            <td>{{ usr.addresse }}</td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>
+
+
+                                </div>
+
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <a style="font-size: 12px;height: 29px;margin-top:-20px;" href="{{path('usr_index')}}" class="btn btn-default " role="button"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span><span><strong> Retour</strong></span>  </a>
+                                    </li>
+
+                                    <li>
+                                        <a style="height: 29px;font-size: 11px;padding:4px 11px;" href="{{ path('usr_edit', { 'id': usr.id }) }}" class="btn btn-primary a-btn-slide-text"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span><span><strong> Modifier</strong></span>  </a>
+
+                                    </li>
+                                    <li>
+
+
+                                        <a style="height: 29px;font-size: 11px;padding:4px 11px;" href="{{ path('usr_delete', { 'id': usr.id }) }}" class="btn btn-danger a-btn-slide-text">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true">
+
+                                            </span>
+                                            <span>
+                                                <strong> Supprimer</strong>
+                                            </span>
+                                        </a>
+
+
+
+                                        <!--
+                                        <a href="{{ path('usr_delete', { 'id': usr.id }) }}"><button style="font-size:9px;height: 30px;margin-top:3px;" class="btn btn-danger a-btn-slide-text" type="submit">
+                                            <span class="glyphicon glyphicon-remove"></span>
+                                            <span><strong>Supprimer</strong></span>
+                                        </button></a>-->
+
+                                    </li>
+                                </ul>
+
+
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{%  endblock %}

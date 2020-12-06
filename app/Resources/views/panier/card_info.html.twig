@@ -1,0 +1,94 @@
+{%  extends 'Panierbase.html.twig' %}
+{%  block body %}
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets_2/css/styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets_2/css/demo.css') }}">
+    <form  method="post" action="{{ path('facturefinal') }}">
+        <div  class="modal_swandch">
+
+            <div class="modal-content animate" >
+                <div class="wrapper2">
+                    <div class="title">
+                        <center><h4 style="font-family: cursive;font-size: x-large;text-shadow: indianred;text-decoration-color: coral; color: brown;">
+                                <span>Carte Informations</span><hr style="width: 50%;"></h4></center>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+                    <div class="creditCardForm">
+
+                        <div class="payment">
+                            <form>
+                                <div class="form-group owner" id="owner-field">
+                                    <label for="owner">Nom et Prénom</label>
+                                    <input type="text" class="form-control" id="owner">
+                                </div>
+                                <div class="form-group CVV" id="cvvfiled">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" class="form-control" id="cvv">
+                                </div>
+                                <div class="form-group" id="card-number-field">
+                                    <label for="cardNumber">Numéro de carte</label>
+                                    <input type="text" class="form-control" id="cardNumber">
+                                </div>
+                                <div class="form-group" id="expiration-date">
+                                    <label>Date d'expiration</label>
+                                    <select>
+                                        <option value="01">Janvier</option>
+                                        <option value="02">Février </option>
+                                        <option value="03">Mars</option>
+                                        <option value="04">Avril</option>
+                                        <option value="05">Mai</option>
+                                        <option value="06">Juin</option>
+                                        <option value="07">Juillet</option>
+                                        <option value="08">Août</option>
+                                        <option value="09">Septembre</option>
+                                        <option value="10">Octobre</option>
+                                        <option value="11">Novembre</option>
+                                        <option value="12">Décembre</option>
+                                    </select>
+                                    <select>
+                                        {% for i in 2021 ..2030 %}
+                                        <option value="{{ i }}"> {{ i }}</option>
+                                        {% endfor %}
+
+                                    </select>
+                                </div>
+                                <div class="form-group" id="credit_cards">
+                                    <img src="{{ asset('assets_2/images/visa.jpg') }}" id="visa">
+                                    <img src="{{ asset('assets_2/images/mastercard.jpg') }}" id="mastercard">
+                                    <img src="{{ asset('assets_2/images/amex.jpg') }}" id="amex">
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                    <br/><br/><br/>
+
+                    <a href="{{ path('adrlivraison') }}"><button type="button" class="button2" style="vertical-align:middle;"><span>Retour </span></button></a>
+
+                    <button id="confirm-purchase" type="submit" class="button" style="vertical-align:middle;width:207px;"><span>Valider mon carte </span></button>
+
+
+                </div>
+
+            </div>
+
+    </form>
+    <script src="{{ ('//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js') }}"></script>
+    <script src="{{ ('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets_2/js/jquery.payform.min.js') }}" charset="utf-8"></script>
+    <script src="{{ asset('assets_2/js/script.js') }}"></script>
+{%  endblock %}

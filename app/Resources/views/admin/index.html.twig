@@ -1,0 +1,86 @@
+{%  extends 'profiladminbase.html.twig' %}
+{% block body %}
+    <section id="main" >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li class="active">Tableau de bord</li>
+                    </ol>
+                    <div class="panel panel-default" >
+
+                        <br/>
+                        <div class="row" style="margin-right: 8px;">
+                            <a href="{{ path('usr_index') }}"><div style="margin-left:40px;" class="col-md-3">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" style="padding: 19px 15px;">
+                                        <h2 style="color:white;" ><i class="glyphicon glyphicon-user" aria-hidden="true">
+                                            </i> {{ nb_us }}</h2>
+                                        <h4>  Client(s)</h4>
+                                    </div>
+
+                                </div>
+                            </div></a>
+                            <a href="{{ path('usr_index_stock') }}"><div style="margin-left:40px;" class="col-md-3">
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">
+                                        <h2 style="color:white;" ><i class="glyphicon glyphicon-floppy-disk" aria-hidden="true">
+                                            </i> {{ nb_s }}</h2>
+                                        <h4>Directeur de Stockage(s)</h4>
+                                    </div>
+                                </div>
+                            </div></a>
+
+                                <a href="{{ path('usr_index_vente') }}"><div style="margin-left:40px;" class="col-md-3">
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h2 style="color:white;" ><i class="glyphicon  glyphicon-th-list" aria-hidden="true">
+                                            </i> {{ nb_v }}</h2>
+                                        <h4>Directeur de Vente(s)</h4>
+                                    </div>
+                                </div>
+                            </div></a>
+
+
+                                    <a href="{{ path('usr_index_livreur') }}"> <div style="margin-left:40px;" class="col-md-3">
+                                <div class="panel panel-warning">
+                                    <div class="panel-heading">
+                                        <h2 style="color:black;" ><i class="glyphicon glyphicon-send" aria-hidden="true">
+                                            </i> {{ nb_l }}</h2>
+                                        <h4>Livreur(s)</h4>
+                                    </div>
+                                </div>
+                            </div></a>
+
+                                        <a href="{{ path('usr_index_gerant') }}"> <div style="margin-left:40px;" class="col-md-3">
+                                <div class="panel panel-danger">
+                                    <div class="panel-heading">
+                                        <h2 style="color:white;" ><i class="glyphicon glyphicon-eye-open" aria-hidden="true">
+                                            </i> {{ nb_g }}</h2>
+                                        <h4>Gérant(s)</h4>
+                                    </div>
+                                </div>
+                            </div></a>
+                                            <a href="{{ path('msg') }}">  <div style="margin-left:40px;" class="col-md-3">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h2 style="color:black;" ><i class="glyphicon glyphicon-comment" aria-hidden="true">
+                                            </i> {{ msg }}</h2>
+                                        <h4>Message(s)</h4>
+                                    </div>
+                                </div>
+                                                </div></a>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <!--Latest User-->
+            </div>
+        </div>
+    </section>
+<br/><br/><br/>
+
+
+{%  endblock %}

@@ -1,0 +1,62 @@
+{%  extends 'profiladminbase.html.twig' %}
+{% block body %}
+
+    <section id="main">
+        <div class="container">
+            <div class="row">
+                <div style="width:75%" class="col-md-9">
+                    <ol  class="breadcrumb">
+                        <li class="active">Messages</li>
+                    </ol>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <table  class="table table-hover"  style="margin-top: -16px;">
+                                    <thead style="color: black;background-color: darkgray;border-color: black;">
+
+                                    <tr>
+                                        <th scope="col">Nom d'utilisateur</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Message</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="myTable">
+                                    {% for msg in messages %}
+                                        <tr>
+                                            <td>{{ msg.username }}</td>
+                                            <td>{{ msg.email }} </td>
+                                            <td >{{ msg.message }}</td>
+                                            <td>
+                                                <a href="{{ path('msg_delete', { 'id': msg.id }) }}" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>  <span><strong> Supprimer</strong></span></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                <br/>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br/><br/><br/><br/>
+
+
+
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+{%  endblock %}

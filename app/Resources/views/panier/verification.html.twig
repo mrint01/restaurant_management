@@ -1,0 +1,22 @@
+{%  extends 'Panierbase.html.twig' %}
+{%  block body %}
+
+    <meta http-equiv="refresh" content="3; URL={{ path('supppanier') }}">
+    <form name="ff" method="post" action="">
+        <div  class="modal_swandch">
+            <div class="modal-content animate" >
+                <div class="wrapper2">
+                    <div class="title">
+                        <center><h4 style="font-family: cursive;font-size: x-large;text-shadow: indianred;text-decoration-color: coral; color: brown;">
+                                <span>Payé</span><hr style="width: 50%;"></h4>
+
+                                <img style="height: 79px;" src="{{ asset('/img/verif.png') }}">
+
+                        <h4 style="font-family: cursive;font-size: large;text-shadow: indianred;text-decoration-color: #4e555b; color: #4e555b;"><span>En attente de confirmation ...</span><hr style="width: 50%;"></h4></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </form>
+{%  endblock %}

@@ -1,0 +1,43 @@
+{% extends 'passbase.html.twig' %}
+{% block body %}
+    <center>
+        <form method="post">
+            <section style="margin-top:160px;" id="main">
+                <div class="container">
+                    <div style="margin-left: 242px;" class="row">
+                        <div class="col-md-9">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" style="background-color:  black;">
+                                    <h3 style="color:white" class="panel-title">Mot de passe oublié </h3>
+                                </div>
+                                {% if app.session.flashBag.has('danger') %}
+                                    <div class="alert alert-danger">
+                                        {% for msg in app.session.flashBag.get('danger') %}
+                                            {{ msg }}
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                                <br/>
+                                <h4 >Adresse mail électronique</h4>
+                                <label for="inputEmail" class="sr-only">Email</label>
+                                <input style="width: 63%;" type="email" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                                <br/>
+                                <button style="font-size: 14px;" class="btn btn-lg btn-primary" type="submit">
+                                    Envoyer un mail !
+                                </button>
+                                <br/>
+                                <br/><br/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </form>
+    </center>
+
+    <footer id="footer" style="margin-top: 206px;  padding: 6px;">
+        <p>Copyright ©2020</p>
+    </footer>
+
+{%  endblock %}

@@ -1,0 +1,72 @@
+{%  extends 'profiladminbase.html.twig' %}
+{% block body %}
+
+
+    <section id="main">
+        <div class="container">
+            <div class="row">
+                <div  class="col-md-9">
+                    <ol class="breadcrumb">
+                        <li class="active">Gestion de site web</li>
+                    </ol>
+
+
+                    <!--Latest User-->
+                    <div class="panel panel-default">
+
+                        <div class="panel-body">
+
+
+
+                            <div class="row">
+                                <h4 class="text-primary text-center"><b>Modifier : </b></h4>
+                                <div class="col-sm-6 col-sm-offset-3">
+                                    {% if app.session.flashBag.has('success') %}
+                                        <div class="alert alert-success">
+                                            {% for msg in app.session.flashBag.get('success') %}
+                                                {{ msg }}
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                    </br>
+
+                                    {{ form_start(edit_form) }}
+                                    <td><img width="250px;height:250px;" src="{{ article.imageArt }}"></td>
+                                    {{ form_widget(edit_form) }}
+
+                                    <br/><center>  <input type="submit" style="margin-left: -190px;" value="Confirmer" class="btn btn-primary a-btn-slide-text" /></center>
+                                    {{ form_end(edit_form) }}
+
+
+                                    <ul style="margin-top: -34px;padding-left: 186px;" class="list-unstyled">
+
+                                        <li>
+
+
+                                            <a style="font-size: 14px;height: 34px;width:109px;margin-left: -36px;" href="{{ path('art_delete', { 'id': article.id }) }}" class="btn btn-danger a-btn-slide-text">
+                                           <span class="glyphicon glyphicon-remove" aria-hidden="true">
+
+                                            </span>
+                                                <span>
+                                                <strong> Supprimer</strong>
+                                            </span>
+                                            </a>
+
+                                            <a style="margin-top: -56px;margin-left: 100px;font-size: 14px;" href="{{path('article')}}" class="btn btn-default " role="button"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span><span><strong> Retour</strong></span>  </a>
+
+                                        </li>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{%  endblock %}

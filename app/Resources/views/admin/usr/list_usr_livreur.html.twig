@@ -1,0 +1,100 @@
+{%  extends 'profiladminbase.html.twig' %}
+{% block body %}
+
+
+    <section id="main">
+        <div class="container">
+            <div class="row">
+                <div style="width:75%" class="col-md-9">
+                    <ol  class="breadcrumb">
+                        <li class="active">Utilisateurs</li>
+                    </ol>
+                    <!--Latest User-->
+                    <div class="panel panel-default">
+
+                        <nav class="navbar navbar-inverse">
+                            <div class="container-fluid">
+
+                                <ul class="nav navbar-nav">
+                                    <li ><a href="{{ path('usr_index') }}">Client(s)</a></li>
+                                    <li ><a href="{{ path('usr_index_stock') }}">Direteur de Stock(s)</a></li>
+                                    <li ><a href="{{ path('usr_index_vente') }}">Directeur de Vente(s)</a></li>
+                                    <li ><a href="{{ path('usr_index_gerant') }}">Gérant(s)</a></li>
+                                    <li class="active"><a href="{{ path('usr_index_livreur') }}">Livreur(s)</a></li>
+
+
+                                </ul>
+                            </div>
+                        </nav>
+
+                        <div class="panel-body">
+                            <div class="row">
+
+                                <div style="margin-right:56px;" class="text-right">
+
+                                    <a href="{{ path('usr_new') }}" class="btn btn-info a-btn-slide-text">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        <span><strong>ajout</strong></span>
+                                    </a>
+
+                                    <div style="margin-top:-34px;margin-left:56px;width:200px;"class="input-group">
+
+                                        <input class="form-control" id="myInput" type="text" placeholder="chercher...">
+                                        <span class="input-group-btn">
+									<button  type="submit" class="btn btn-default" data-original-title="" title=""><i class="glyphicon glyphicon-search"></i></button>
+								</span>
+                                    </div>
+
+
+                                </div>
+                                <br/><br/>
+
+                                <table  class="table table-hover" >
+                                    <thead style="color: black;background-color: darkgray;border-color: black;">
+
+                                    <tr>
+                                        <th scope="col">Nom d'utilisateur</th>
+                                        <th scope="col">Nom & Prénom</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="myTable">
+                                    {% for usr in usrs %}
+                                        <tr>
+                                            <td>{{ usr.username }}</td>
+                                            <td>{{ usr.name }} {{ usr.lastname }}</td>
+                                            <td >{{ usr.email }}</td>
+                                            <td>
+                                                <a href="{{ path('usr_show', { 'id': usr.id }) }}" class="btn btn-success a-btn-slide-text"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><span><strong> vue</strong></span></a>
+                                                <a href="{{ path('usr_show', { 'id': usr.id }) }}" class="btn btn-primary a-btn-slide-text"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>  <span><strong> Modifier</strong></span></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                <br/>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br/><br/><br/><br/>
+
+
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+{%  endblock %}

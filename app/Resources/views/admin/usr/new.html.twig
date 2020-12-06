@@ -1,0 +1,49 @@
+{%  extends 'profiladminbase.html.twig' %}
+{% block body %}
+
+
+    <section id="main">
+        <div class="container">
+            <div class="row">
+                <div  class="col-md-9">
+                    <ol  class="breadcrumb">
+                        <li class="active">Utilisateurs</li>
+                    </ol>
+                    <!--Latest User-->
+                    <div class="panel panel-default">
+
+                        <div class="panel-body">
+
+                            <div class="row">
+                                <h3 class="text-primary text-center"><b>Créer - Utilisateur</b></h3>
+                                <hr width="50%"></hr>
+
+                                <div class="col-sm-6 col-sm-offset-4">
+
+                                    {{ form_start(form) }}
+                                    {{ form_widget(form) }}
+                                    <br/><center>
+                                        <input type="submit" value="Créer" class="btn btn-primary" />
+                                        <a style="font-size: 14px;" href="{{path('usr_index')}}" class="btn btn-default " role="button"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span><span><strong> Retour</strong></span>  </a>
+
+                                    </center>
+                                    {{ form_end(form) }}
+                                </div>
+
+
+
+
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+<br/><br/><br/><br/>
+{%  endblock %}

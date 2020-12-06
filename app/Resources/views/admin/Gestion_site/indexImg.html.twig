@@ -1,0 +1,96 @@
+{%  extends 'profiladminbase.html.twig' %}
+{% block body %}
+
+
+
+    <section id="main">
+        <div class="container">
+            <div class="row">
+                <div  class="col-md-9">
+                    <ol  class="breadcrumb">
+                        <li class="active">Gestion de site web</li>
+                    </ol>
+                    <div class="panel panel-default">
+
+                        <nav class="navbar navbar-inverse">
+                            <div class="container-fluid">
+
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a href="{{ path('ger_site') }}">Page d'accueil</a></li>
+                                    <li ><a href="{{ path('article') }}">Article</a></li>
+
+
+                                </ul>
+                            </div>
+                        </nav>
+                        <nav class="navbar navbar-inverse" style="background-color: antiquewhite;border-color: aliceblue;">
+                            <div class="container-fluid">
+
+                                <ul class="nav navbar-nav">
+                                    <li ><a href="{{  path('ger_site') }}">Les Mots</a></li>
+                                    <li style="background-color: azure;"><a href="{{ path('img_site') }}">Les Images de site web</a></li>
+
+
+                                </ul>
+                            </div>
+                        </nav>
+
+                        <div class="panel-body">
+                            <div class="row">
+
+                                <div style="margin-right:56px;" class="text-right">
+
+                                    <br/><br/><br/>
+
+
+
+                                </div>
+                                <br/><br/>
+
+                                <table  class="table table-hover" >
+                                    <thead style="color: black;background-color: darkgray;border-color: black;">
+
+                                    <tr>
+                                        <th scope="col">Image</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="myTable">
+                                    {% for img in images %}
+                                        <tr>
+
+                                            <td><img width="250px;height:250px;" src="{{ img.image }}"></td>
+
+                                            <td>
+                                                <a href="{{ path('img_edit_site' , { 'id': img.id }) }}" class="btn btn-primary a-btn-slide-text"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span>  <span><strong> Modifier</strong></span></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                                <br/>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br/><br/><br/><br/>
+
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+{%  endblock %}

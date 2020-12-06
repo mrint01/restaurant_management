@@ -1,0 +1,129 @@
+{%  extends 'Panierbase.html.twig' %}
+{%  block body %}
+
+    {%  set HT = 0 %}
+    {%  set Total = 0 %}
+
+
+    <div  class="modal_swandch">
+
+        <div class="modal-content animate" >
+            <div class="wrapper2">
+                <div class="title">
+                    <center><h4 style="font-family: cursive;font-size: x-large;text-shadow: indianred;text-decoration-color: coral; color: brown;">
+                            <span>Votre Facture</span><br/></h4></center>
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Références</th>
+                        <th>Quantite</th>
+                        <th>Prix unitaire</th>
+                        <th>Prix Article</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% if produits|length == 0  %}
+                        <tr>
+                            <td colspan="5" class="active"><center>Aucun articles dans votre panier</center></td>
+                        </tr>
+                    {% endif %}
+                    {%  for p in produits %}
+                        <tr>
+                            <form action="{{ path('update', {'id' : p.id }) }}" method="get">
+                                <td><img src="{{ p.imageArt }}" width="150" height="150"></td>
+                                <td>{{ p.nameArt }}</td>
+                                <td>
+                                    <select name="qte" class="span1" onchange="this.form.submit()">
+                                        {%  for i in 1..10 %}
+                                            <option value="{{  i  }}" {%  if i == panier[p.id]  %} selected="selected" {%  endif %}>{{ i }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <a href="{{ path('supprimer' , {'id' : p.id}) }}"><i class="glyphicon glyphicon-trash"></i></a>
+                                </td>
+                                <td>{{ p.prixArt }} DT</td>
+                                <td>{{ p.prixArt * panier[p.id] }} DT</td>
+                            </form>
+                        </tr>
+                        {%  set HT = HT +  (p.prixArt * panier[p.id] ) %}
+                        {%  set Total = Total +  ( p.prixArt * panier[p.id]) %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <br/><br/><br/>
+
+                <div id="prixid">
+
+                    {%  if HT  != 0 %}
+                        <p>Prix Articles :  <b>{{ HT }} DT</b> </p>
+                        <p>Frais de Livraison : <b>2 DT</b></p>
+                        <p>Prix Total : <b>{{ Total +2 }} DT</b></p>
+                    {%  endif %}
+                    <br/>
+                </div>
+                <br/>
+                <br/>
+                <hr width="70%" style="border-top: 1px solid brown;">
+                <br/>
+                <center>
+                    <div style="text-align: left"> <b>Addresse de Livraison</b></div>
+                    <br/>
+                    <div style="text-align: left;">
+                    <table  style="background-color: bisque;border-style: dotted;width: auto;">
+                        <tbody>
+                        <tr>
+                            <td style="padding: 20px;">
+                                <div style="margin-left: 5%;">
+                                    {{  users[0].addresse }}<br/>
+                                    {{  users[0].name }} {{ users[0].lastname }}
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </center>
+
+                <center>
+                    <div style="text-align:-webkit-right;margin-top: -16%;">
+                    <div style="font-size: 15px;text-align: end;"> <b>Mode de Paiement</b></div>
+                    <br/>
+
+                    <table  style="width:auto;background-color: bisque;border-style: dotted;">
+                        <tbody>
+                        <tr>
+                            <td style="padding: 20px;">
+                                <div style="margin-left: 5%;">
+                                    Paiement par carte de crédit<br/><br/>
+                                    <img src="{{ ('//img.icons8.com/color/36/000000/visa.png') }}"> <img src="{{ ('//img.icons8.com/color/36/000000/mastercard.png') }}"> <img src="{{ ('//img.icons8.com/color/36/000000/amex.png') }}">
+
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </div>
+                </center>
+
+
+
+
+                <br/><br/><br/>
+                <a href="{{ path('homepage') }}"><button class="button2" style="vertical-align:middle"><span>Annuler</span></button></a>
+                {%  if HT  != 0 %}
+                    <a href="{{ path('verif') }}"><button class="button" style="vertical-align:middle"><span>Payer</span></button></a>
+                {%  endif %}
+
+
+
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+{%  endblock %}

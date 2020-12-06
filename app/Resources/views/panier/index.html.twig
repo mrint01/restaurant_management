@@ -1,0 +1,84 @@
+{%  extends 'Panierbase.html.twig' %}
+{%  block body %}
+
+{%  set HT = 0 %}
+{%  set Total = 0 %}
+
+
+    <div  class="modal_swandch">
+
+        <div class="modal-content animate" >
+            <div class="wrapper2">
+                <div class="title">
+                    <center><h4 style="font-family: cursive;font-size: x-large;text-shadow: indianred;text-decoration-color: coral; color: brown;">
+                        <span>Votre Panier</span><br/></h4></center>
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Références</th>
+                        <th>Quantite</th>
+                        <th>Prix unitaire</th>
+                        <th>Prix Article</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% if produits|length == 0  %}
+                        <tr>
+                            <td colspan="5" class="active"><center>Aucun articles dans votre panier</center></td>
+                        </tr>
+                        {% endif %}
+                    {%  for p in produits %}
+                        <tr>
+                            <form action="{{ path('update', {'id' : p.id }) }}" method="get">
+                                <td><img src="{{ p.imageArt }}" width="150" height="150"></td>
+                                <td>{{ p.nameArt }}</td>
+                                <td>
+                                    <select name="qte" class="span1" onchange="this.form.submit()">
+                                        {%  for i in 1..10 %}
+                                            <option value="{{  i  }}" {%  if i == panier[p.id]  %} selected="selected" {%  endif %}>{{ i }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <a href="{{ path('supprimer' , {'id' : p.id}) }}"><i class="glyphicon glyphicon-trash"></i></a>
+                                </td>
+                                <td>{{ p.prixArt }} DT</td>
+                                <td>{{ p.prixArt * panier[p.id] }} DT</td>
+                            </form>
+                        </tr>
+                                {%  set HT = HT +  (p.prixArt * panier[p.id] ) %}
+                                {%  set Total = Total +  ( p.prixArt * panier[p.id]) %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <br/><br/><br/>
+
+                <div id="prixid">
+
+                    {%  if HT  != 0 %}
+                        <p>Prix Articles :  <b>{{ HT }} DT</b> </p>
+                        <p>Frais de Livraison : <b>2 DT</b></p>
+                        <p>Prix Total : <b>{{ Total +2 }} DT</b></p>
+                    {%  endif %}
+                    <br/>
+                </div>
+                <br/>
+
+
+                <a href="{{ path('homepage') }}"><button class="button2" style="vertical-align:middle"><span>Continuer mes achats </span></button></a>
+    {%  if HT  != 0 %}
+                <a href="{{ path('adrlivraison') }}"><button class="button" style="vertical-align:middle"><span>Valider mon panier </span></button></a>
+    {%  endif %}
+
+
+
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+{%  endblock %}

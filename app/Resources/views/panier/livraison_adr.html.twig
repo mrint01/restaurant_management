@@ -1,0 +1,48 @@
+{%  extends 'Panierbase.html.twig' %}
+{%  block body %}
+    <form name="ff" method="post" action="{{ path('card') }}">
+    <div  class="modal_swandch">
+
+        <div class="modal-content animate" >
+            <div class="wrapper2">
+                <div class="title">
+                    <center><h4 style="font-family: cursive;font-size: x-large;text-shadow: indianred;text-decoration-color: coral; color: brown;">
+                            <span>Livraison</span><hr style="width: 50%;"></h4></center>
+
+                </div>
+
+               <center>
+                   <div style="font-size: 15px;text-align: center;"> <b>Addresse de Livraison</b></div>
+                   <br/>
+                   <table  style="border-style: dotted;width: auto;">
+                    <tbody>
+                    <tr>
+                        <td style="padding: 20px;">
+                        <input type="radio" id="radio" name="radio" required>
+                        <label for="radio" >{{ users[0].addresse }} <br/>
+                        </label>
+                            <div style="margin-left: 5%;">
+                                {{  users[0].name }} {{ users[0].lastname }}
+                            </div>
+                        </td>
+
+
+                    </tr>
+
+                    </tbody>
+                </table></center>
+                <br/><br/><br/>
+
+                <a href="{{ path('panier') }}"><button type="button" class="button2" style="vertical-align:middle;"><span>Retour </span></button></a>
+                <a href="{{ path('card') }}"><button type="submit" class="button" style="vertical-align:middle;width:207px;"><span>Valider mon addresse </span></button></a>
+
+
+            </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    </form>
+{%  endblock %}
